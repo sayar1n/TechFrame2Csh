@@ -1,0 +1,10 @@
+{
+  "modules": [
+    "core.js",
+    "logging.js",
+    "validation.js",
+    "export.js",
+    "report.js"
+  ]
+}
+
