@@ -1,11 +1,11 @@
 {
-  "name": "task2-modules-di-pipeline",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "start": "node src/main.js",
-    "test": "node --test"
+    "name": "module-loader-demo",
+    "version": "1.0.0",
+    "scripts": {
+      "start": "node app.js",
+      "test:order": "node tests/test-order.js",
+      "test:missing": "node tests/test-missing.js",
+      "test:cycle": "node tests/test-cycle.js",
+      "test:di": "node tests/test-di.js"
+    }
   }
-}
-
