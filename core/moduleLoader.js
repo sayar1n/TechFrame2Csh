@@ -1,10 +1,9 @@
-// core/moduleLoader.js
 const path = require('path');
 const fs = require('fs');
 
 // Загрузка модулей из папки по списку имён
 function loadModules(moduleNames, modulesDir) {
-  const modules = new Map(); // имя -> объект модуля
+  const modules = new Map();
   for (const name of moduleNames) {
     const modulePath = path.join(modulesDir, `${name}.js`);
     if (!fs.existsSync(modulePath)) {
@@ -37,7 +36,7 @@ function validateDependencies(modulesMap) {
   for (const [name, mod] of modulesMap.entries()) {
     for (const dep of mod.dependencies) {
       if (!modulesMap.has(dep)) {
-        throw new Error(`Отсутствует обязательный модуль "${dep}" для модуля "${name}"`);
+        throw new Error(`Missing required module "${dep}" for module "${name}"`);
       }
     }
   }
@@ -53,7 +52,7 @@ function topologicalSort(modulesMap) {
     inDegree.set(name, mod.dependencies.length);
     graph.set(name, []);
   }
-  // Построение обратных рёбер (для алгоритма Кана не обязательны, но для проверки циклов удобно)
+  // Построение обратных рёбер
   for (const [name, mod] of modulesMap.entries()) {
     for (const dep of mod.dependencies) {
       graph.get(dep).push(name);
@@ -82,7 +81,9 @@ function topologicalSort(modulesMap) {
     const remaining = Array.from(inDegree.entries())
       .filter(([_, deg]) => deg > 0)
       .map(([name]) => name);
-    throw new Error(`Обнаружен циклический модуль: ${remaining.join(', ')}`);
+    throw new Error(
+      `Circular dependency detected among modules: ${remaining.join(', ')}`
+    );
   }
   return order;
 }

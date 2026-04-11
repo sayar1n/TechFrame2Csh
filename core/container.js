@@ -1,4 +1,3 @@
-// core/container.js
 class Container {
     constructor() {
       this.registrations = new Map();   // имя -> фабрика
