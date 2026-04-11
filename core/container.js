@@ -1,10 +1,10 @@
 class Container {
     constructor() {
-      this.registrations = new Map();   // имя -> фабрика
-      this.instances = new Map();       // имя -> закэшированный синглтон
+      this.registrations = new Map(); // регистрация сервисов
+      this.instances = new Map();       // экземпляры сервисов
     }
   
-    // Зарегистрировать сервис (фабрика получает контейнер для разрешения своих зависимостей)
+    // Зарегистрировать сервис (ядро получает контейнер для разрешения своих зависимостей из модулей)
     register(name, factory) {
       if (this.registrations.has(name)) {
         throw new Error(`Сервис "${name}" уже зарегистрирован`);
