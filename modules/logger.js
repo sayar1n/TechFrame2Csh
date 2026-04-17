@@ -8,6 +8,6 @@ module.exports = {
     },
     async initialize(container) {
       const logger = container.resolve('logger');
-      logger.log('Logger module initialized');
+      logger.log('Модуль логирования иницилизирован');
     }
   };

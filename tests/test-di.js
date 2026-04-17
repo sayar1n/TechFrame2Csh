@@ -1,3 +1,4 @@
+// имитируем модули
 const assert = require('assert');
 const { Container } = require('../core/container');
 const { initializeModules, topologicalSort, validateDependencies } = require('../core/moduleLoader');

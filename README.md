@@ -72,7 +72,7 @@ project/
 node tests/test-order.js      # Проверка порядка запуска
 node tests/test-missing.js    # Проверка отсутствующего модуля
 node tests/test-cycle.js      # Проверка циклических зависимостей
-node tests/test-di.js         # Проверка внедрения зависимостей
+node tests/test-di.js         # Проверка внедрения зависимостей (dependency injection - паттерн)
 ```
 
 Все тесты используют встроенный модуль `assert` и не требуют установки дополнительных пакетов.
